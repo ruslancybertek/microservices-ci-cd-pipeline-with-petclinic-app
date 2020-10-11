@@ -12,11 +12,11 @@ services:
     image: petclinic-discovery-server:dev
     container_name: discovery-server
     mem_limit: 512M
-    ports: 
-      - 8761:8761 
+    ports:
+     - 8761:8761
     depends_on: 
-      - config-server   
-    entrypoint: ["./dockerize,", "-wait=tcp://config-server:8888", "-timeout=60s", "--", "java", "-Djava.security.edg=file:/dev/./urandom", "-jar", "/app.jar"]
+     - config-server
+    entrypoint: ["./dockerize", "-wait=tcp://config-server:8888", "-timeout=60s", "--", "java", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar" ]
 
   customers-service:
     image: petclinic-customers-service:dev
